@@ -86,6 +86,30 @@ Different patterns of Dynamic programming
 
 
 
+-> Matrix chain Multiplication 
+			class Solution{
+				static int dp[][];
+				static int multiply(int arr[], int left,int right){
+			        if(left>=right) return dp[left][right]=0; 
+			        if(dp[left][right]!=0) return dp[left][right]; 
+			        int min=Integer.MAX_VALUE;
+			        for(int k=left+1; k<=right; k++){
+			            int sum=multiply(arr,left,k-1) + 
+			                multiply(arr,k,right) + 
+			                arr[left-1]*arr[k-1]*arr[right];
+			            min=Math.min(sum, min);
+			        }
+			        return dp[left][right]=min; 
+			    }
+			    
+			    static int matrixMultiplication(int N, int arr[])
+			    {
+			        dp=new int[N+1][N+1];
+			        return multiply(arr, 1, N-1);
+			    }
+			}
+
+
 	
 	
   
