@@ -1,0 +1,32 @@
+import  java.util.*
+import java.io.*
+
+Public class DisjointSetUnion{
+    List<Integer> rank = new ArrayList<>();
+    List<Integer> parent = new ArrayList<>();
+
+    private void disjointSet( int n){
+        for(int i : n){
+            rank.add(i)=0;
+	  parent.add(i)=i;
+        }
+    }
+
+    private int find(int node){
+        if(node == parent.get(node)) return node;
+        int p= find(parent.get(node));
+        parent.set(node,p)
+        return p;  
+    }
+
+    Private void union(int u, int v){
+        int up=find(u);
+        int vp=find(v);
+        if(rank.get(up)<rank.get(vp)) parent.set(up, vp);
+        else if(rank.get(up)>rank.get(vp)) parent.set(vp, up);
+        else{
+  	      	parent.set(vp, up);
+        	rank.set(up, rank.get(up) +1);
+        }
+    }	
+        
