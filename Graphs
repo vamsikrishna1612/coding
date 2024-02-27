@@ -2,6 +2,12 @@
 // for moving up, down, left and right
         int[][] dir = {{-1,0}, {1, 0}, {0,-1}, {0,1}};
 
+// create graph 
+        private List<Integer>[] adj = new ArrayList[vertices];
+        for(int i=0; i<vertices; i++) adj[i]=new ArrayList<Integer>();
+        for(int i=0; i<edges.length; i++)
+            adj[edges[i][0]].add(edges[i][1]);
+
 
 // BFS snippet
         ArrayList<Integer> bfs = new ArrayList<>();
