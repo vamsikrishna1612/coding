@@ -1,4 +1,44 @@
 
+// for moving up, down, left and right
+        int[][] dir = {{-1,0}, {1, 0}, {0,-1}, {0,1}};
+
+
+// BFS snippet
+        ArrayList<Integer> bfs = new ArrayList<>();
+        int[] visited = new int[V]; 
+        Queue<Integer> q= new LinkedList<>();
+        q.add(0);
+        visited[0]=1;
+        while(!q.isEmpty()){
+            int item = q.poll();
+            bfs.add(item);
+            for(int x: adj.get(item)){
+                if(visited[x]==0) {
+                visited[x]=1;
+                q.add(x);
+                }
+            }
+        }
+        return bfs;
+
+
+// dfs of graph 
+        private ArrayList<Integer> res = new ArrayList<>();
+        private void dfs(int node, boolean[] visited, ArrayList<ArrayList<Integer>> adj){
+            visited[node]=true;
+            res.add(node);
+            for(int x: adj.get(node)){
+                if(!visited[x]) dfs(x, visited, adj);
+            }
+        }
+        public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+            boolean[] visited = new boolean[V];
+            dfs(0, visited, adj);
+            return res;
+        }
+
+
+
 //Dijkstra Algorithm implementation using priority Queue
 
 class Solution
